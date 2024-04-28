@@ -11,10 +11,6 @@ db = PyMongo(app).db
 
 @app.route('/')
 def hello_world():  
-      db.inventory.insert_one({"b":1})
-      db.patients.insert_one({"name":"Rishabh","age":"25","address":"punjab","assignedDoctor":"2149541239745"})
-      db.doctors.insert_one({"name":"Dr Rishabh","age":"25","address":"punjab","department":"41293912734"})
-      db.departments.insert_one({"name":"Heart"})
       return 'Hello World!'
 
 #login
