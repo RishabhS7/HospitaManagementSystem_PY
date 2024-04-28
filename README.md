@@ -54,6 +54,15 @@ Description: Adds a new service to an existing department.
 Endpoint: POST /addDoctorToDepartment
 Description: Assigns a doctor to an existing department.
 
-#Search by Initial
+### Search by Initial
 Endpoint: GET /search?type={type}&letters={letters}
 Description: Searches for departments, doctors, or patients whose names start with the provided initial letters.
+
+# Note : Improvements
+#### This project is created to understand the basic template and apis for the Hostipal management system. 
+#### We will be requiring to make some improvement such as - 
+
+- Security token for specific role based api calls
+- validations for every entry and parameters
+- more modular for every category in case of routes , queries , models
+- test cases for the testing
