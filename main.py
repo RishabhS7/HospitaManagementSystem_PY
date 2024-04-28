@@ -1,7 +1,9 @@
 from flask import Flask
 from flask_pymongo import PyMongo
 from flask import request, jsonify
-from models import Patient,ContactInformation,MedicalHistory,Doctor,Doctor_Appointments,Patient_Appointment,Department
+from models.doctor import Doctor,Doctor_Appointments
+from models.department import Department
+from models.patient import Patient,ContactInformation,MedicalHistory,Patient_Appointment
 from flask_pymongo import ObjectId
 import json
 
