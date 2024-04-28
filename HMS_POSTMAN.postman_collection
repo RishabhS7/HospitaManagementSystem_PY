@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "67f69b84-ef25-4d9f-8346-4a2fa0c48237",
+		"name": "REST API basics: CRUD, test & variable",
+		"description": "# 🚀 **Hospital Management System API Overview:**  \n\nThese APIs facilitate comprehensive management of hospital operations. They enable adding, updating, and retrieving patient and doctor information. Appointments can be scheduled, specifying date, time, and duration. Departments are customizable with services and assigned doctors. The system streamlines hospital processes, enhancing patient care and organizational efficiency.  \n  \n\n## 🔖 APIs created in the HMS\n\n1. **Add Patient:**\n    \n    - **Endpoint:** `POST /addPatient`\n        \n    - **Description:** Adds a new patient to the database.\n        \n    - { \"name\": \"string\", \"age\": \"string\", \"gender\": \"string\", \"contact_information\": { \"phone\": \"string\", \"email\": \"string\", \"address\": \"string\" }}\n        \n2. **Get Patient by ID:**\n    \n    - **Endpoint:** `GET /patients/{patient_id}`\n        \n    - **Description:** Retrieves patient details by their unique ID.\n        \n3. **Update Patient:**\n    \n    - **Endpoint:** `PUT /updatePatient/{patient_id}`\n        \n    - **Description:** Updates patient information by their ID.\n        \n    - **Request Body:** JSON with fields to be updated.\n        \n4. **Add Doctor:**\n    \n    - **Endpoint:** `POST /addDoctor`\n        \n    - **Description:** Registers a new doctor.\n        \n    - jsonCopy code{ \"name\": \"string\", \"specialization\": \"string\", \"contact_information\": { \"phone\": \"string\", \"email\": \"string\", \"address\": \"string\" }, \"start_time\": \"string\", \"total_shift_time\": \"string\", \"break_start_time\": \"string\"}\n        \n5. **Get Doctor by ID:**\n    \n    - **Endpoint:** `GET /doctors/{doctor_id}`\n        \n    - **Description:** Retrieves doctor details by their unique ID.\n        \n6. **Update Doctor:**\n    \n    - **Endpoint:** `PUT /updateDoctor/{doctor_id}`\n        \n    - **Description:** Updates doctor information by their ID.\n        \n    - **Request Body:** JSON with fields to be updated.\n        \n7. **Add Appointment:**\n    \n    - **Endpoint:** `POST /addAppointment`\n        \n    - **Description:** Creates a new appointment for a patient with a specific doctor.\n        \n    - jsonCopy code{ \"doctor_id\": \"string\", \"patient_id\": \"string\", \"date\": \"string\", \"time\": \"string\", \"duration_in_minutes\": \"string\", \"department\": \"string\"}\n        \n8. **Add Department:**\n    \n    - **Endpoint:** `POST /addDepartment`\n        \n    - **Description:** Registers a new department.\n        \n    - jsonCopy code{ \"name\": \"string\", \"services\": \\[\"string\"\\], \"doctors_assigned\": \\[\"string\"\\]}\n        \n9. **Add Service to Department:**\n    \n    - **Endpoint:** `POST /addServiceToDepartment`\n        \n    - **Description:** Adds a new service to an existing department.\n        \n    - jsonCopy code{ \"department_name\": \"string\", \"service\": \"string\"}\n        \n10. **Add Doctor to Department:**\n    \n    - **Endpoint:** `POST /addDoctorToDepartment`\n        \n    - **Description:** Assigns a doctor to an existing department.\n        \n    - jsonCopy code{ \"department_name\": \"string\", \"doctor_name\": \"string\"}\n        \n11. **Search by Initial:**\n    \n    - **Endpoint:** `GET /search?type={type}&letters={letters}`\n        \n    - **Description:** Searches for departments, doctors, or patients whose names start with the provided initial letters.\n        \n\n## 💡Related Links\n\nGithub",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "16216905"
+	},
+	"item": [
+		{
+			"name": "doctors",
+			"item": [
+				{
+					"name": "addDoctor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\" : \"dhheraj\",\r\n        \"specialization\" : \"allergies\",\r\n        \"contact_information\": {\r\n            \"phone\":\"19875124\",\r\n            \"email\":\"nnikhil@gmail.com\",\r\n            \"address\":\"234865, street 13\"\r\n        },\r\n        \"start_time\" : \"13:00\",\r\n        \"total_shift_time\" :\"9\" ,\r\n        \"break_start_time\" :\"16:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/addDoctor"
+					},
+					"response": []
+				},
+				{
+					"name": "updateDoctor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "{{base_url}}/addDoctor/662d239055d3e95ad9af58d2"
+					},
+					"response": []
+				},
+				{
+					"name": "addAppointment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{base_url}}/addAppointment"
+					},
+					"response": []
+				},
+				{
+					"name": "getDoctor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/doctors/662e4af4f2ebbcc0bc496632"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "patients",
+			"item": [
+				{
+					"name": "addPatient",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"rishabh\",\r\n    \"age\":\"25\",\r\n    \"gender\":\"m\",\r\n    \"contact_information\":{\r\n        \"phone\":\"91887523\",\r\n        \"email\":\"rosdhf@gmail.com\",\r\n        \"address\":\"#2563,wljdvwj\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/addPatient",
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "updatePatient",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n\"age\":6,\n\"gender\":\"M\",\n\"contact_information\":{\n\"phone\":\"918823\",\n\"email\":\"rosdhf@gmail.com\",\n\"address\":\"2563.wljdvwj\"},\n\"medical_history\":{\n\"previous_diagnoses\":[\"new\",\"anohwr\"],\n\"allergies\":[\"ajhv\",\"sajj\"],\n\"medications\":[\"check\",\"cehcek\"]\n},\n\"appointment_records\":[]\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/updatePatient/662d239055d3e95ad9af58d2",
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "getPatient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/doctors/662e4af4f2ebbcc0bc496632"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "departments",
+			"item": [
+				{
+					"name": "addDepartment",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "addDoctorToDepartment",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "addServiceToDepartment",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Update data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/info?id=1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"info"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/info?id=1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"info"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "searchData",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\":\"patient\",\r\n    \"letters\":\"newedf\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/search?letters=check&type=patient",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "letters",
+							"value": "check"
+						},
+						{
+							"key": "type",
+							"value": "patient"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
