@@ -66,16 +66,28 @@ This project is a Hospital Management System that provides functionalities to ma
      - validations for every entry and parameters
      - more modular for every category in case of routes , queries , models
      - test cases for the testing
-     - ├── app
+     
+       ├── app
+
        │   ├── __init__.py
-       │   ├── main
-       │   │   ├── controller
-       │   │   │   └── __init__.py
-       │   │   ├── __init__.py
-       │   │   ├── model
-       │   │   │   └── __init__.py
-       │   │   └── service
-       │   │       └── __init__.py
-       │   └── test
-       │       └── __init__.py
-       └── requirements.txt
+
+           │   ├── main
+
+                │   │   ├── controller
+
+                │   │   │   └── __init__.py
+
+                │   │   ├── __init__.py
+
+                │   │   ├── model
+
+                │   │   │   └── __init__.py
+
+                │   │   └── service
+
+                │   │       └── __init__.py
+
+                │   └── test
+
+                │       └── __init__.py
+
