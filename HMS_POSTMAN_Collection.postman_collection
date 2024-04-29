@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"name\" : \"dhheraj\",\r\n        \"specialization\" : \"allergies\",\r\n        \"contact_information\": {\r\n            \"phone\":\"19875124\",\r\n            \"email\":\"nnikhil@gmail.com\",\r\n            \"address\":\"234865, street 13\"\r\n        },\r\n        \"start_time\" : \"13:00\",\r\n        \"total_shift_time\" :\"9\" ,\r\n        \"break_start_time\" :\"16:00\"\r\n}",
+							"raw": "{\r\n        \"name\" : \"ravish\",\r\n        \"specialization\" : \"allergies\",\r\n        \"contact_information\": {\r\n            \"phone\":\"19875124\",\r\n            \"email\":\"nnikhil@gmail.com\",\r\n            \"address\":\"234865, street 13\"\r\n        },\r\n        \"start_time\" : \"13:00\",\r\n        \"total_shift_time\" :\"9\" ,\r\n        \"break_start_time\" :\"16:00\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -81,7 +81,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"rishabh\",\r\n    \"age\":\"25\",\r\n    \"gender\":\"m\",\r\n    \"contact_information\":{\r\n        \"phone\":\"91887523\",\r\n        \"email\":\"rosdhf@gmail.com\",\r\n        \"address\":\"#2563,wljdvwj\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"name\":\"rishbh\",\r\n    \"age\":\"25\",\r\n    \"gender\":\"m\",\r\n    \"contact_information\":{\r\n        \"phone\":\"91887523\",\r\n        \"email\":\"roh@gmail.com\",\r\n        \"address\":\"#2563,wljdvwj\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -132,7 +132,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{base_url}}/doctors/662e4af4f2ebbcc0bc496632"
+						"url": "{{base_url}}/patients/662e4964884576073b4a94ce"
 					},
 					"response": []
 				}
@@ -145,7 +145,17 @@
 					"name": "addDepartment",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Heart\",\r\n    \"services\": [\"allergies\"],\r\n    \"doctors_assigned\" : [\"662e4af4f2ebbcc0bc496632\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/addDepartment"
 					},
 					"response": []
 				},
@@ -153,116 +163,42 @@
 					"name": "addDoctorToDepartment",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"department_name\":\"Heart\",\r\n    \"doctor_name\":\"Devendra\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/addDoctorToDepartment"
 					},
 					"response": []
 				},
 				{
 					"name": "addServiceToDepartment",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"department_name\":\"Heart\",\r\n    \"service\":\"surgery\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/addServiceToDepartment"
 					},
 					"response": []
 				}
 			]
 		},
 		{
-			"name": "Update data",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Successful PUT request\", function () {",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
-							"});",
-							""
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/info?id=1",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"info"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "1"
-						}
-					]
-				},
-				"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
-			},
-			"response": []
-		},
-		{
-			"name": "Delete data",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Successful DELETE request\", function () {",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
-							"});",
-							""
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/info?id=1",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"info"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "1"
-						}
-					]
-				},
-				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
-			},
-			"response": []
-		},
-		{
-			"name": "searchData",
+			"name": "searchUsingInitials",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},

@@ -44,6 +44,13 @@ class ContactInformation:
 # Define the schema for the patient collection
 class Patient:
     def __init__(self, name, age, gender, contact_information, medical_history, appointment_records=[]):
+        if not isinstance(name, str) or not name.strip():
+            raise ValueError("Name must be a non-empty string")
+        if not isinstance(age, str) or not age.strip():
+            raise ValueError("Age must be a non-empty string")
+        if not isinstance(gender, str) or not gender.strip():
+            raise ValueError("Gender must be a non-empty string")
+
         self.name = name
         self.age = age
         self.gender = gender
