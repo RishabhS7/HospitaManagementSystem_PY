@@ -66,6 +66,7 @@ This project is a Hospital Management System that provides functionalities to ma
      - validations for every entry and parameters
      - more modular for every category in case of routes , queries , models
      - test cases for the testing
+     - better approach ->
      
        ├── app
 
